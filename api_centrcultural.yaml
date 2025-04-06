@@ -1,0 +1,679 @@
+openapi: 3.0.3
+info:
+  title: API Centro Cultural
+  description: |-
+    Definição da API em OpenAPI 3 para o projeto de Programação III (meta I) do curso de Multimédia do ISMT. 
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: geral@ismt.pt 
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:5000/api/v1 
+    description: Servidor Local
+tags:
+  - name: organização
+    description: Dados referentes á gestão de artistas do evento
+  - name: eventos
+    description: Dados referentes aos eventos
+  - name: artistas
+    description: Dados referentes aos artistas
+  - name: bilhetes
+    description: Dados referentes aos bilhetes
+  - name: clientes
+    description: Dados referentes a utilizadores registados
+  - name: utilizadores
+    description: Dados referentes aos utilizadores
+paths:
+  /organization:
+    post:
+      summary: criar a organização do Centro Cultural
+      operationId: createorganization
+      security:
+        - AuthToken: []
+      responses:
+        '201':
+          description: Dados registados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'  
+    get:
+      summary: obter a organização do Centro Cultural
+      operationId: getallorganization
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados encontrados com sucesso
+        '400':
+          description: Má request
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'  
+    put:
+      summary: atualiza a organização do Centro Cultural de acordo com o ID
+      operationId: updateorganization
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados atualizados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+    delete:
+      summary: elimina a organização do Centro Cultural de acordo com o ID
+      operationId: deleteorganization
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados atualizados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+  /artistas:
+    post:
+      summary: criar artistas do Centro Cultural
+      operationId: createartists
+      security:
+        - AuthToken: []
+      responses:
+        '201':
+          description: Dados registados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artists'  
+    get:
+      summary: obter artistas do Centro Cultural
+      operationId: getallartists
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados encontrados com sucesso
+        '400':
+          description: Má request
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artists'  
+    put:
+      summary: atualiza os artistas do Centro Cultural de acordo com o ID
+      operationId: updateartists
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados atualizados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artists'    
+    delete:
+      summary: elimina artistas do Centro Cultural de acordo com o ID
+      operationId: deleteartists
+      security:
+        - AuthToken: []
+      responses:
+        '204':
+          description: Dados apagados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artists'
+  /eventos:
+    post:
+      summary: criar eventos do Centro Cultural
+      operationId: createevents
+      security:
+        - AuthToken: []
+      responses:
+        '201':
+          description: Dados registados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'  
+    get:
+      summary: obter eventos do Centro Cultural
+      operationId: getallevents
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados encontrados com sucesso
+        '400':
+          description: Má request
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'  
+    put:
+      summary: atualiza os eventos do Centro Cultural de acordo com o ID
+      operationId: updateevents
+      security:
+        - AuthToken: []
+      responses:
+        '200':
+          description: Dados atualizados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'    
+    delete:
+      summary: elimina eventos do Centro Cultural de acordo com o ID
+      operationId: deleteevents
+      security:
+        - AuthToken: []
+      responses:
+        '204':
+          description: Dados apagados com sucesso
+        '400':
+          description: Má request
+        '404':
+          description: Não encontrado
+        '500':
+          description: Erro interno de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
+  /bilhetes/{id}: 
+    get:
+      tags:
+        - eventos
+      summary: Obter evento
+      operationId: obterevento
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Invalid ID supplied
+        '400':
+          description: Order not found
+        '404':
+          description: Order not found
+  /cliente/{id}: 
+    get:
+      tags:
+        - User
+      summary: Obter utilizador
+      operationId: obterutilizador
+      parameters:
+        - name: id
+          in: path
+          description: ID of the order that needs to be deleted
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Order not found
+  /user/logout:
+    get:
+      tags:
+        - user
+      summary: Logs out current logged in user session
+      description: ''
+      operationId: logoutUser
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+  /user/{id}:
+    get:
+      tags:
+        - user
+      summary: Get user by user name
+      description: ''
+      operationId: getUserByName
+      parameters:
+        - name: username
+          in: path
+          description: 'The name that needs to be fetched. Use user1 for testing. '
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+    put:
+      tags:
+        - user
+      summary: Update user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      parameters:
+        - name: username
+          in: path
+          description: name that need to be deleted
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - name: username
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária dos artistas
+          example: 1
+        name:
+          type: string
+          description: Nome do organizador
+          example: Carlos Silva
+      xml:
+        name: Organization
+    Artists:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária do evento
+          example: 1
+        name:
+          type: string
+          description: nome do artista
+          example: Sónia Marques
+        e-mail:
+          type: string
+          description: Endereço de e-mail do artista
+          example: soniamarques@gmail.com
+        contact:
+          type: string
+          description: contacto do artista
+          example: +351 968537209
+        adress:
+          type: string
+          description: Morada do artista
+          example: Rua A
+        NIF:
+          type: string
+          description: NIF do artista
+          example: 123456789
+        workinghours:
+          type: string
+          description: Horas de trabalho dos artistas
+          example: 12
+        birthdate:
+          type: string
+          description: Data de nascimento dos artistas
+          example: 12/4/2001
+        events:
+          type: array
+          description: Todos os eventos a que os artistas pertencem 
+          example: Exposição de arte comtemporânea 
+          xml:
+            name: Events
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Events'
+      xml:
+        name: Events
+    Events:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave forasteira (ID dos Artistas)
+          example: 1
+        name:
+          type: string
+          description: nome do Evento
+          example: Dança Contemporânea
+        data:
+          type: string
+          description: data do Evento
+          example: Dança Contemporânea
+        local:
+          type: string
+          description: local do Evento
+          example: Café concerto
+        start_date:
+          type: string
+          description: data do Evento
+          example: 12h
+        end_date:
+          type: string
+          description: data do Evento
+          example: 15h 
+        id_artistas:
+          type: string
+          description: artistas do Evento
+          example: 6   
+        TotalHours:
+          type: number
+          format: double
+          description: Total de horas de espectaculos
+          example: 25
+        artists:
+          type: object
+          description: Artistas que fazem parte do evento
+      xml:
+        name: id
+        wrapped: true
+      items:
+          $ref: '#/components/schemas/Tickets'
+    Tickets:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária do evento
+          example: 1
+        name:
+          type: string
+          description: nome do evento
+          example: Exposiçaõ de arte comtemporânea 
+        adress:
+          type: string
+          description: Endereço de e-mail do cliente
+          example: soniamarques@gmail.com
+        price:
+          type: string
+          description: preço do bilhete
+          example: 13€
+        hour:
+          type: string
+          description: hora do Evento
+          example: 19h
+        date:
+          type: string
+          description: Data do evento
+          example: 12/7/2026
+        event:
+          type: array
+          description: Evento do bilhete
+          example: Exposiçaõ de arte comtemporânea 
+          xml:
+            name: Event
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Clients'
+      xml:
+        name: Tickets
+    Clients:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Chave primária dos bilhetes
+          example: 1
+        name:
+          type: string
+          description: nome do cliente
+          example: Maria Marques
+        e-amil:
+          type: string
+          description: Endereço de e-mail do cliente
+          example: mariamarques@gmail.com
+        NIF:
+          type: string
+          description: NIF do cliente
+          example: 674980234
+        birthdate:
+          type: string
+          description: data de nascimento do cliente
+          example: 15/9/2004
+        contact:
+          type: string
+          description: Contacto do cliente
+          example: 967820963
+        user:
+          type: integer
+          description: ID do utilizador
+          example: 2
+          xml:
+            name: User
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/User'
+      xml:
+        name: Clients       
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        phone:
+          type: string
+          example: '965998790'
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+          example: 1
+      xml:
+        name: user
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      xml:
+        name: tag
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  requestBodies:
+    Organization:
+      description: Objeto com os dados do organizadores
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Organization'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Organization'
+    Artists:
+      description: Objeto com os dados do artistas
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Artists'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Artists'
+    Events:
+      description: Objeto com os dados dos eventos
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Events'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Events'
+    Tickets:
+      description: Objeto com os dados dos bilhetes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Tickets'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Tickets'
+    Clients:
+      description: Objeto com os dados dos clientes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Clients'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Clients'
+    User:
+      description: Objeto com os dados do utilizadores
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/User'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
